@@ -20,15 +20,16 @@ def _get_cli_path():
         sys.exit(1)
     return str(cli_path)
 
-AVOID_DUPLICATE_OPTION = "--cli-executed"
+AVOID_INFINITE_DUPLICATION_OPTION = "--cli-executed"
 
-def exec_guard():
-    if AVOID_DUPLICATE_OPTION in sys.argv:
-        sys.argv.remove(AVOID_DUPLICATE_OPTION)
+def guard():
+    if AVOID_INFINITE_DUPLICATION_OPTION in sys.argv:
+        sys.argv.remove(AVOID_INFINITE_DUPLICATION_OPTION)
         return
 
     _check_os()
     cli_path = _get_cli_path()
-    print(cli_path)
-    args = [cli_path, sys.executable, os.getcwd() + "/" + sys.argv[0], AVOID_DUPLICATE_OPTION] + sys.argv[1:]
+    if not sys.argv[0].startswith("/"):
+        sys.argv[0] = os.getcwd() + "/" + sys.argv[0]
+    args = [cli_path, sys.executable, sys.argv[0], AVOID_INFINITE_DUPLICATION_OPTION] + sys.argv[1:]
     os.execv(cli_path, args)
