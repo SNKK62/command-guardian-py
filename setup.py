@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        "cmgdpy": ["bin/cmgd-arm64", "bin/cmgd-x86_64"],
+        "cmgdpy": ["bin/cmgd_arm64", "bin/cmgd_x86_64"],
     },
     entry_points={},
 )
