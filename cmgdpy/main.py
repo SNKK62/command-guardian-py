@@ -11,7 +11,7 @@ def _check_os():
 def _get_cli_path():
     cli_path = os.path.join(os.getcwd(), "bin", "cmgd")
     cli_path = files("cmgdpy").joinpath("bin")
-    if platform.machine() == "arch64":
+    if platform.machine() == "arm64":
         cli_path = cli_path.joinpath("cmgd_arm64")
     elif platform.machine() == "x86_64":
         cli_path = cli_path.joinpath("cmgd_x86_64")
