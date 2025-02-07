@@ -1,3 +1,3 @@
-from .main import exec_guard
+from .main import guard
 
-__all__ = ["exec_guard"]
+__all__ = ["guard"]
