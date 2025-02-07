@@ -29,5 +29,6 @@ def exec_guard():
 
     _check_os()
     cli_path = _get_cli_path()
+    print(cli_path)
     args = [cli_path, sys.executable, os.getcwd() + "/" + sys.argv[0], AVOID_DUPLICATE_OPTION] + sys.argv[1:]
     os.execv(cli_path, args)
